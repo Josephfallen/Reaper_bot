@@ -1,18 +1,18 @@
-const { Client, Intents } = require('discord.js');
+const { Client, GatewayIntentBits } = require('discord.js');
 
 // Replace 'YOUR_TOKEN_HERE' with your bot's token
-const TOKEN = "YOUR_TOKEN_HERE";
-
+const TOKEN = "TOKEN_HERE"
 // Role ID of the role you want to check
-const role_id = '1212269069378785290';
+const role_id = 'Role_ID_Here';
 
-const client = new Client({ 
+const client = new Client({
     intents: [
-        Intents.FLAGS.GUILDS, 
-        Intents.FLAGS.GUILD_MESSAGES
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMembers,
     ],
 });
-
 client.once('ready', () => {
     console.log('Logged in as ' + client.user.tag);
 });
@@ -34,7 +34,7 @@ client.on('messageCreate', async message => {
         const members_with_role = message.guild.members.cache.filter(member => member.roles.cache.has(role.id)).map(member => member.user.username);
 
         // Send the list of usernames to the channel
-        message.channel.send(`Users with role **${role.name}**: ${members_with_role.join(', ')}`);
+        message.channel.send(Users with role ** ${ role.name }**: ${ members_with_role.join(',') });
     }
 });
 
